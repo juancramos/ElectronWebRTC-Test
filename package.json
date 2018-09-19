@@ -1,0 +1,30 @@
+{
+  "name": "electronwebrtc-test",
+  "version": "1.0.0",
+  "description": "A WebRTC test in electron chromuim environment",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/judicapo/electronwebrtc-test.git"
+  },
+  "keywords": [
+    "WebRTC",
+    "electron",
+    "node",
+    "JavaScript"
+  ],
+  "author": "judicapo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/judicapo/electronwebrtc-test/issues"
+  },
+  "homepage": "https://github.com/judicapo/electronwebrtc-test#readme",
+  "devDependencies": {
+    "electron": "^2.0.0",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  }
+}
