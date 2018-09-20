@@ -1,8 +1,8 @@
-var endpoint = '/'
-var socket = io.connect(endpoint)
+// @flow
+import { onMessage, connect } from './peer-connection'
+import events from './events'
+import socket from './socket'
 
-socket.emit('rtc-message', { message: "Hi!" })
-
-socket.on('rtc-message', function(message) {
-    console.log('Message from server:', message)
-})
+socket.on('rtc-message', onMessage)
+connect()
+events()
