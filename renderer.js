@@ -1,11 +1,67 @@
+const { getSourceId } = require('./js/capture-utils')
 
-var endpoint = 'http://localhost:8888'
-var socket = io.connect(endpoint)
+const electron = require('electron')
+const { width, height } = electron.screen.getPrimaryDisplay().size
 
-socket.emit('rtc-message', {
-    message: "Hi from Electron!"
-})
+const endpoint = 'http://localhost:8888'
+const socket = io.connect(endpoint)
 
-socket.on('rtc-message', function (message) {
-    console.log('Message from server:', message)
-})
+const config = {
+    iceServers: [{
+        url: 'stun:stun.l.google.com:19302'
+    }]
+}
+
+let peers = []
+let localStream = null
+
+socket.on('rtc-message', handleMessage)
+
+boot()
+
+function boot() {
+    getSourceId(streamId => {
+        captureScreen(streamId, stream => {
+            console.log('captureScreen - stream:', stream)
+            localStream = stream
+        })
+    })
+}
+
+function captureScreen(streamId, callback) {
+    const mediaConstraints = {
+        audio: false,
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop',
+                chromeMediaSourceId: streamId,
+                minWidth: width,
+                minHeight: height,
+                maxWidth: width,
+                maxHeight: height
+            }
+        }
+    }
+    console.log('captureScreen - called with mediaConstraints: ', mediaConstraints)
+    navigator.mediaDevices.getUserMedia(mediaConstraints)
+        .then(callback)
+        .catch(console.error)
+}
+
+function handleMessage(message) {
+}
+
+function sendMessage(message) {
+}
+
+function initPeerConnections(clientId, stream) {
+}
+
+function handleIceCandidate(event) {
+}
+
+function handleSessionDescription(sdp) {
+}
+
+function createPeerConnection(clientId) {
+}

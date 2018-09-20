@@ -26,5 +26,8 @@
     "electron": "^2.0.0",
     "express": "^4.16.3",
     "socket.io": "^2.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0"
   }
 }

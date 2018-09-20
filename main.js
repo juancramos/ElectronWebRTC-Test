@@ -2,7 +2,7 @@
 const { app, BrowserWindow } = require('electron')
 const express = require('express')
 const expressApp = express()
-const port = 8888
+const port = process.env.NODE_PORT || 8888
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
