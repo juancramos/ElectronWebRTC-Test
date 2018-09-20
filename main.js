@@ -48,7 +48,7 @@ app.on('ready', function () {
       socket.broadcast.emit('rtc-message', payload)
     })
   }
-  
+
   createWindow()
 })
 
